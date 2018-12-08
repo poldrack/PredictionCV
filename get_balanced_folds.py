@@ -9,7 +9,7 @@ class BalancedKFold:
     """
     This function uses anova across CV folds to find
     a set of folds that are balanced in their distriutions
-    of the X value - see Kohavi, 1995
+    of the Y value - see Kohavi, 1995
     - we don't actually need X but we take it for consistency
     """
     def __init__(self,nfolds=5,pthresh=0.8,verbose=False):
