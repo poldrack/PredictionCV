@@ -44,7 +44,7 @@ for i in range(n_boostraps):
     X, y = gen_data(n_samples)
     X_val, y_val = gen_data(100000)
 
-    scores.append(-np.mean(
+    scores.append(np.mean(
         model_selection.cross_val_score(model, X, y,
                                         cv=model_selection.KFold(5),
                                         scoring='r2')))
