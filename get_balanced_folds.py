@@ -12,12 +12,13 @@ class BalancedKFold:
     of the Y value - see Kohavi, 1995
     - we don't actually need X but we take it for consistency
     """
-    def __init__(self,nfolds=5,pthresh=0.8,verbose=False):
+    def __init__(self,nfolds=5,pthresh=0.8,verbose=False,max_splits=1000):
         self.nfolds=nfolds
         self.pthresh=pthresh
         self.verbose=verbose
+        self.max_splits=max_splits
 
-    def split(self,X,Y,max_splits=1000):
+    def split(self,X,Y,groups=None):
         """
         - we don't actually need X but we take it for consistency
         """
@@ -51,7 +52,7 @@ class BalancedKFold:
                     print(lm_y.summary())
                 return iter(folds)
 
-            if runctr>max_splits:
+            if runctr>self.max_splits:
                 print('no sufficient split found, returning best (p=%f)'%best_pval)
                 return iter(best_folds)
 
